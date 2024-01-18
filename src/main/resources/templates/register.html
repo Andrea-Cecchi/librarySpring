@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+    <h1>Register</h1>
+    <form th:action="@{/register}" th:object="${user}" method="post">
+        <label>Nome</label>
+        <input type="text" name="nome" th:field="*{nome}">
+        <p style="color: red" th:if="${#fields.hasErrors('nome')}">Errore nel nome</p>
+        <br>
+        <label>Cognome</label>
+        <input type="text" name="cognome" th:field="*{cognome}">
+        <p style="color: red" th:if="${#fields.hasErrors('cognome')}">Errore nel cognome</p>
+        <br>
+        <label>Username</label>
+        <input type="text" name="email" th:field="*{email}">
+        <p style="color: red" th:if="${#fields.hasErrors('email')}">Errore nel username</p>
+        <br>
+        <label>Password</label>
+        <input type="password" name="password" th:field="*{password}">
+        <p style="color: red" th:if="${#fields.hasErrors('password')}">Errore nel password</p>
+        <br>
+        <button type="submit">registera</button>
+        <br>
+        <p style="color: red" th:if="${#fields.hasErrors()}">Username o password errati</p>
+    </form>
+</body>
+</html>

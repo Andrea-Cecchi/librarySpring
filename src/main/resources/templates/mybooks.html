@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista Libri</title>
+</head>
+<body>
+<table>
+  <tr>
+    <th>titolo</th>
+    <th>autore</th>
+    <th>anno</th>
+    <th>prezzo</th>
+  </tr>
+  <tr th:each="book: ${books}">
+    <td>
+      <a th:text="${book.titolo}" th:href="@{/dettaglioLibro(libro=${book.titolo})}"></a>
+    </td>
+
+    <td th:text="${book.autore}"></td>
+    <td th:text="${book.annoPubblicazione}"></td>
+    <td th:text="${book.prezzo}"></td>
+  </tr>
+
+</table>
+<br>
+<a th:if="${!authenticated}" href="/"></a>
+<a th:if="${authenticated}" href="/aggiungiLibro"> aggiungi libro</a>
+</body>
+</html>
